@@ -300,7 +300,7 @@ export default function LibraryMenuItems({
             pendingElements.length > 0 ||
             unpublishedItems.length > 0) && (
             <div className="library-menu-items-container__header library-menu-items-container__header--excal">
-              {t("labels.excalidrawLib")}
+              Deepkix
             </div>
           )}
           {publishedItems.length > 0 ? (

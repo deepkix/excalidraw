@@ -21,7 +21,7 @@ export const SidebarTrigger = ({
   const appState = useUIAppState();
 
   return (
-    <label title={title} className="sidebar-trigger__label-element">
+    <label title={title} className="sidebar-trigger__label-element" style={{display:'none'}}>
       <input
         className="ToolIcon_type_checkbox"
         type="checkbox"

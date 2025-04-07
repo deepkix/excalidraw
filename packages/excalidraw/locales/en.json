@@ -384,9 +384,9 @@
     "link_title": "Shareable link",
     "link_details": "Export as a read-only link.",
     "link_button": "Export to Link",
-    "excalidrawplus_description": "Save the scene to your Excalidraw+ workspace.",
+    "excalidrawplus_description": "Save the scene to your Deepkix workspace.",
     "excalidrawplus_button": "Export",
-    "excalidrawplus_exportError": "Couldn't export to Excalidraw+ at this moment..."
+    "excalidrawplus_exportError": "Couldn't export to Deepkix at this moment..."
   },
   "helpDialog": {
     "blog": "Read our blog",
@@ -540,7 +540,7 @@
   "welcomeScreen": {
     "app": {
       "center_heading": "All your data is saved locally in your browser.",
-      "center_heading_plus": "Did you want to go to the Excalidraw+ instead?",
+      "center_heading_plus": "Did you want to go to the Deepkix instead?",
       "menuHint": "Export, preferences, languages, ..."
     },
     "defaults": {
@@ -570,9 +570,9 @@
         "description": "Export the scene data to a file from which you can import later."
       },
       "excalidrawPlus": {
-        "title": "Excalidraw+",
-        "button": "Export to Excalidraw+",
-        "description": "Save the scene to your Excalidraw+ workspace."
+        "title": "Deepkix",
+        "button": "Export to Deepkix",
+        "description": "Save the scene to your Deepkix workspace."
       }
     },
     "modal": {
