@@ -361,7 +361,7 @@ export const ShapesSwitcher = ({
           />
         );
       })}
-      <div className="App-toolbar__divider" />
+      {/* <div className="App-toolbar__divider" /> */}
 
       <DropdownMenu open={isExtraToolsMenuOpen}>
         <DropdownMenu.Trigger

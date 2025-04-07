@@ -8,6 +8,7 @@ export const EncryptedIcon = () => {
   return (
     <a
       className="encrypted-icon tooltip"
+      style={{ display: "none" }}
       href="https://plus.excalidraw.com/blog/end-to-end-encryption"
       target="_blank"
       rel="noopener noreferrer"

@@ -47,7 +47,7 @@ import {
 
 import "./DefaultItems.scss";
 
-export const LoadScene = () => {
+export const LoadScene = ({ showInUI = true }) => {
   const { t } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const elements = useExcalidrawElements();
@@ -182,6 +182,7 @@ export const Help = () => {
       onSelect={() => actionManager.executeAction(actionShortcuts)}
       shortcut="?"
       aria-label={t("helpDialog.title")}
+      showInUI={false}
     >
       {t("helpDialog.title")}
     </DropdownMenuItem>
@@ -256,6 +257,7 @@ export const ToggleTheme = (
             ariaLabel: t("buttons.systemMode"),
           },
         ]}
+        showInUI={false}
       >
         {t("labels.theme")}
       </DropdownMenuItemContentRadio>
@@ -264,6 +266,7 @@ export const ToggleTheme = (
 
   return (
     <DropdownMenuItem
+      showInUI={false}
       onSelect={(event) => {
         // do not close the menu when changing theme
         event.preventDefault();
@@ -340,33 +343,7 @@ export const Export = () => {
 Export.displayName = "Export";
 
 export const Socials = () => {
-  const { t } = useI18n();
-
-  return (
-    <>
-      <DropdownMenuItemLink
-        icon={GithubIcon}
-        href="https://github.com/excalidraw/excalidraw"
-        aria-label="GitHub"
-      >
-        GitHub
-      </DropdownMenuItemLink>
-      <DropdownMenuItemLink
-        icon={XBrandIcon}
-        href="https://x.com/excalidraw"
-        aria-label="X"
-      >
-        {t("labels.followUs")}
-      </DropdownMenuItemLink>
-      <DropdownMenuItemLink
-        icon={DiscordIcon}
-        href="https://discord.gg/UexuTaE"
-        aria-label="Discord"
-      >
-        {t("labels.discordChat")}
-      </DropdownMenuItemLink>
-    </>
-  );
+  return <></>;
 };
 Socials.displayName = "Socials";
 
@@ -380,6 +357,7 @@ export const LiveCollaborationTrigger = ({
   const { t } = useI18n();
   return (
     <DropdownMenuItem
+      showInUI={false}
       data-testid="collab-button"
       icon={usersIcon}
       className={clsx({

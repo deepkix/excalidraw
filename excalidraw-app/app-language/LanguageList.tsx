@@ -17,11 +17,13 @@ export const LanguageList = ({ style }: { style?: React.CSSProperties }) => {
       aria-label={t("buttons.selectLanguage")}
       style={style}
     >
-      {languages.map((lang) => (
-        <option key={lang.code} value={lang.code}>
-          {lang.label}
-        </option>
-      ))}
+      {languages
+        .filter((lang) => lang.code === "en" || lang.code === "fr-FR")
+        .map((lang) => (
+          <option key={lang.code} value={lang.code}>
+            {lang.label}
+          </option>
+        ))}
     </select>
   );
 };

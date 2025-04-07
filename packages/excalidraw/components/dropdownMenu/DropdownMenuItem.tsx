@@ -26,6 +26,7 @@ const DropdownMenuItem = ({
   textStyle,
   onSelect,
   onClick,
+  showInUI = true,
   ...rest
 }: {
   icon?: JSX.Element;
@@ -38,6 +39,7 @@ const DropdownMenuItem = ({
   selected?: boolean;
   textStyle?: React.CSSProperties;
   className?: string;
+  showInUI?: boolean;
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onSelect">) => {
   const handleClick = useHandleDropdownMenuItemClick(onClick, onSelect);
   const ref = useRef<HTMLButtonElement>(null);
@@ -52,6 +54,10 @@ const DropdownMenuItem = ({
       }
     }
   }, [hovered, order]);
+
+  if (showInUI === false) {
+    return null;
+  }
 
   return (
     <button

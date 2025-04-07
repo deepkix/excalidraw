@@ -19,15 +19,17 @@ const WelcomeScreenMenuItemContent = ({
   children: React.ReactNode;
 }) => {
   const device = useDevice();
-  return (
-    <>
-      <div className="welcome-screen-menu-item__icon">{icon}</div>
-      <div className="welcome-screen-menu-item__text">{children}</div>
-      {shortcut && !device.editor.isMobile && (
-        <div className="welcome-screen-menu-item__shortcut">{shortcut}</div>
-      )}
-    </>
-  );
+
+  return <></>;
+  // return (
+  //   <>
+  //     <div className="welcome-screen-menu-item__icon">{icon}</div>
+  //     <div className="welcome-screen-menu-item__text">{children}</div>
+  //     {shortcut && !device.editor.isMobile && (
+  //       <div className="welcome-screen-menu-item__shortcut">{shortcut}</div>
+  //     )}
+  //   </>
+  // );
 };
 WelcomeScreenMenuItemContent.displayName = "WelcomeScreenMenuItemContent";
 
@@ -133,17 +135,9 @@ const Menu = ({ children }: { children?: React.ReactNode }) => {
 Menu.displayName = "Menu";
 
 const MenuItemHelp = () => {
-  const actionManager = useExcalidrawActionManager();
+  // const actionManager = useExcalidrawActionManager();
 
-  return (
-    <WelcomeScreenMenuItem
-      onSelect={() => actionManager.executeAction(actionShortcuts)}
-      shortcut="?"
-      icon={HelpIcon}
-    >
-      {t("helpDialog.title")}
-    </WelcomeScreenMenuItem>
-  );
+  return <></>;
 };
 MenuItemHelp.displayName = "MenuItemHelp";
 
@@ -154,16 +148,17 @@ const MenuItemLoadScene = () => {
   if (appState.viewModeEnabled) {
     return null;
   }
+  return <></>;
 
-  return (
-    <WelcomeScreenMenuItem
-      onSelect={() => actionManager.executeAction(actionLoadScene)}
-      shortcut={getShortcutFromShortcutName("loadScene")}
-      icon={LoadIcon}
-    >
-      {t("buttons.load")}
-    </WelcomeScreenMenuItem>
-  );
+  // return (
+  //   <WelcomeScreenMenuItem
+  //     onSelect={() => actionManager.executeAction(actionLoadScene)}
+  //     shortcut={getShortcutFromShortcutName("loadScene")}
+  //     icon={LoadIcon}
+  //   >
+  //     {t("buttons.load")}
+  //   </WelcomeScreenMenuItem>
+  // );
 };
 MenuItemLoadScene.displayName = "MenuItemLoadScene";
 
@@ -173,11 +168,13 @@ const MenuItemLiveCollaborationTrigger = ({
   onSelect: () => any;
 }) => {
   const { t } = useI18n();
-  return (
-    <WelcomeScreenMenuItem shortcut={null} onSelect={onSelect} icon={usersIcon}>
-      {t("labels.liveCollaboration")}
-    </WelcomeScreenMenuItem>
-  );
+  return <></>;
+
+  // return (
+  //   <WelcomeScreenMenuItem shortcut={null} onSelect={onSelect} icon={usersIcon}>
+  //     {t("labels.liveCollaboration")}
+  //   </WelcomeScreenMenuItem>
+  // );
 };
 MenuItemLiveCollaborationTrigger.displayName =
   "MenuItemLiveCollaborationTrigger";
@@ -187,7 +184,7 @@ MenuItemLiveCollaborationTrigger.displayName =
 Center.Logo = Logo;
 Center.Heading = Heading;
 Center.Menu = Menu;
-Center.MenuItem = WelcomeScreenMenuItem;
+// Center.MenuItem = WelcomeScreenMenuItem;
 Center.MenuItemLink = WelcomeScreenMenuItemLink;
 Center.MenuItemHelp = MenuItemHelp;
 Center.MenuItemLoadScene = MenuItemLoadScene;

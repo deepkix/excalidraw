@@ -30,7 +30,7 @@ export const SidebarHeader = ({
     >
       {children}
       <div className="sidebar__header__buttons">
-        {renderDockButton && (
+        {
           <Tooltip label={t("labels.sidebarLock")}>
             <Button
               onSelect={() => props.onDock?.(!props.docked)}
@@ -42,7 +42,7 @@ export const SidebarHeader = ({
               {PinIcon}
             </Button>
           </Tooltip>
-        )}
+        }
         <Button
           data-testid="sidebar-close"
           className="sidebar__close"

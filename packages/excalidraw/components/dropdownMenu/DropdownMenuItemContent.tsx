@@ -7,13 +7,16 @@ const MenuItemContent = ({
   icon,
   shortcut,
   children,
+  showInUI,
 }: {
   icon?: JSX.Element;
   shortcut?: string;
   textStyle?: React.CSSProperties;
   children: React.ReactNode;
+  showInUI?: Boolean;
 }) => {
   const device = useDevice();
+
   return (
     <>
       {icon && <div className="dropdown-menu-item__icon">{icon}</div>}
