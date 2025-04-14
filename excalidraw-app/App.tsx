@@ -6,7 +6,7 @@ import {
   reconcileElements,
   convertToExcalidrawElements,
 } from "@excalidraw/excalidraw";
-import { parseMermaidToExcalidraw }  from "@excalidraw/mermaid-to-excalidraw";
+import { parseMermaidToExcalidraw } from "@excalidraw/mermaid-to-excalidraw";
 import { trackEvent } from "@excalidraw/excalidraw/analytics";
 import { getDefaultAppState } from "@excalidraw/excalidraw/appState";
 import {
