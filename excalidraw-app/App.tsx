@@ -268,7 +268,9 @@ const initializeScene = async (opts: {
 
     const url = externalUrlMatch[1];
     try {
-      const request = await fetch(window.decodeURIComponent(url));
+      const request = await fetch(window.decodeURIComponent(url)); // add '+ ".json"' if we want to remove extension from url
+      // url example: localhost:3000#app=enocdedurl.json
+      // url example: localhost:3000#app=enocdedurl.excalidraw
       const data = await loadFromBlob(await request.blob(), null, null);
       if (
         !scene.elements.length ||
