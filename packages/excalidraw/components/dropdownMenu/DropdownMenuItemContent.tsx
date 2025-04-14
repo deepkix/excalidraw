@@ -7,13 +7,11 @@ const MenuItemContent = ({
   icon,
   shortcut,
   children,
-  showInUI,
 }: {
   icon?: JSX.Element;
   shortcut?: string;
   textStyle?: React.CSSProperties;
   children: React.ReactNode;
-  showInUI?: Boolean;
 }) => {
   const device = useDevice();
 

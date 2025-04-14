@@ -4,7 +4,9 @@ import {
   TTDDialogTrigger,
   CaptureUpdateAction,
   reconcileElements,
+  convertToExcalidrawElements,
 } from "@excalidraw/excalidraw";
+import { parseMermaidToExcalidraw }  from "@excalidraw/mermaid-to-excalidraw";
 import { trackEvent } from "@excalidraw/excalidraw/analytics";
 import { getDefaultAppState } from "@excalidraw/excalidraw/appState";
 import {
@@ -217,7 +219,11 @@ const initializeScene = async (opts: {
     /^#json=([a-zA-Z0-9_-]+),([a-zA-Z0-9_-]+)$/,
   );
   const externalUrlMatch = window.location.hash.match(/^#url=(.*)$/);
-
+  const mermaidMatch = window.location.hash.match(/^#mermaid=(.*)$/);
+  let mermaidDefinition = "";
+  if (mermaidMatch) {
+    mermaidDefinition = decodeURIComponent(mermaidMatch[1]);
+  }
   const localDataState = importFromLocalStorage();
 
   let scene: RestoredDataState & {
@@ -261,10 +267,10 @@ const initializeScene = async (opts: {
       }
 
       roomLinkData = null;
-      window.history.replaceState({}, APP_NAME, window.location.origin);
+      // window.history.replaceState({}, APP_NAME, window.location.origin);
     }
   } else if (externalUrlMatch) {
-    window.history.replaceState({}, APP_NAME, window.location.origin);
+    // window.history.replaceState({}, APP_NAME, window.location.origin);
 
     const url = externalUrlMatch[1];
     try {
@@ -286,6 +292,41 @@ const initializeScene = async (opts: {
           },
         },
         isExternalScene,
+      };
+    }
+  } else if (mermaidDefinition) {
+    try {
+      // Parse mermaid definition to excalidraw elements
+      const excalidrawData = await parseMermaidToExcalidraw(mermaidDefinition);
+      // Check if we should override current scene
+      if (
+        !scene.elements.length ||
+        (await openConfirmModal(shareableLinkConfirmDialog))
+      ) {
+        scene = {
+          elements: convertToExcalidrawElements(excalidrawData.elements),
+          appState: {
+            ...scene.appState,
+            // Use the scene's background color as excalidrawData doesn't have attrBackground
+            viewBackgroundColor: scene.appState.viewBackgroundColor,
+          },
+          files: {}, // Add empty files object to satisfy the RestoredDataState type
+          scrollToContent: true,
+        };
+        // Clear the mermaid hash to avoid reprocessing on reload
+        window.history.replaceState({}, APP_NAME, window.location.origin);
+      }
+    } catch (error) {
+      console.error("Error parsing mermaid:", error);
+      return {
+        scene: {
+          appState: {
+            errorMessage: 't("alerts.invalidMermaidSyntax")',
+          },
+          elements: [],
+          files: {}, // Add empty files object to satisfy the RestoredDataState type
+        },
+        isExternalScene: false,
       };
     }
   }

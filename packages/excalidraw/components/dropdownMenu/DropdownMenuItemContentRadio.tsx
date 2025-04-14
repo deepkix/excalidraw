@@ -12,7 +12,6 @@ type Props<T> = {
   onChange: (value: T) => void;
   children: React.ReactNode;
   name: string;
-  showInUI?: Boolean;
 };
 
 const DropdownMenuItemContentRadio = <T,>({
@@ -22,13 +21,8 @@ const DropdownMenuItemContentRadio = <T,>({
   choices,
   children,
   name,
-  showInUI,
 }: Props<T>) => {
   const device = useDevice();
-
-  if (showInUI) {
-    return null;
-  }
 
   return (
     <>

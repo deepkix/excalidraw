@@ -47,7 +47,7 @@ import {
 
 import "./DefaultItems.scss";
 
-export const LoadScene = ({ showInUI = true }) => {
+export const LoadScene = () => {
   const { t } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const elements = useExcalidrawElements();
@@ -182,7 +182,6 @@ export const Help = () => {
       onSelect={() => actionManager.executeAction(actionShortcuts)}
       shortcut="?"
       aria-label={t("helpDialog.title")}
-      showInUI={false}
     >
       {t("helpDialog.title")}
     </DropdownMenuItem>
@@ -257,7 +256,6 @@ export const ToggleTheme = (
             ariaLabel: t("buttons.systemMode"),
           },
         ]}
-        showInUI={false}
       >
         {t("labels.theme")}
       </DropdownMenuItemContentRadio>
@@ -266,7 +264,6 @@ export const ToggleTheme = (
 
   return (
     <DropdownMenuItem
-      showInUI={false}
       onSelect={(event) => {
         // do not close the menu when changing theme
         event.preventDefault();
@@ -357,7 +354,6 @@ export const LiveCollaborationTrigger = ({
   const { t } = useI18n();
   return (
     <DropdownMenuItem
-      showInUI={false}
       data-testid="collab-button"
       icon={usersIcon}
       className={clsx({
